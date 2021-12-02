@@ -16,7 +16,7 @@ IMAGE_FSTYPES += "tegraflash"
 
 ARTIFACTIMG_FSTYPE = "ext4"
 # Generate dataimg for use with tegraflash
-IMAGE_TYPEDEP_tegraflash += " dataimg"
+IMAGE_TYPEDEP:tegraflash += " dataimg"
 IMAGE_FSTYPES += "dataimg"
 PREFERRED_PROVIDER_u-boot-fw-utils = "u-boot-fw-utils-tegra"
 PREFERRED_PROVIDER_libubootenv_tegra = "${@'libubootenv-fake' if d.getVar('PREFERRED_PROVIDER_virtual/bootloader').startswith('cboot') else 'libubootenv'}"
@@ -67,8 +67,8 @@ ROOTFSPART_SIZE = "${@tegra_mender_set_rootfs_partsize(${MENDER_CALC_ROOTFS_SIZE
 # Default for thud and later is grub integration but we need to use u-boot integration already included.
 # Leave out sdimg since we don't use this with tegra (instead use
 # tegraflash)
-MENDER_FEATURES_ENABLE_append_tegra = "${@tegra_mender_uboot_feature(d)}"
-MENDER_FEATURES_DISABLE_append_tegra = " mender-grub mender-image-uefi"
+MENDER_FEATURES_ENABLE:append_tegra = "${@tegra_mender_uboot_feature(d)}"
+MENDER_FEATURES_DISABLE:append_tegra = " mender-grub mender-image-uefi"
 
 # Use these variables to adjust your total rootfs size across both
 # images. Rootfs size will be approximately 1/2 of

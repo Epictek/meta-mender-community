@@ -21,6 +21,6 @@ do_install() {
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-RPROVIDES_${PN} += "libubootenv-bin u-boot-fw-utils"
-RCONFLICTS_${PN} = "libubootenv-bin"
-RREPLACES_${PN} = "libubootenv-bin"
+RPROVIDES:${PN} += "libubootenv-bin u-boot-fw-utils"
+RCONFLICTS:${PN} = "libubootenv-bin"
+RREPLACES:${PN} = "libubootenv-bin"
